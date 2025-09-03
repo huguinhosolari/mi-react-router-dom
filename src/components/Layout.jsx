@@ -1,4 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
+import Breadcrumbs from "./Breadcrumbs";
 
 export default function Layout() {
     const navStyle = ({ isActive }) => ({
@@ -15,8 +16,13 @@ export default function Layout() {
                 <NavLink to="/" style={navStyle} end>Inicio</NavLink>
                 <NavLink to="/productos" style={navStyle} end>Productos</NavLink>
                 <NavLink to="/buscar" style={navStyle} end>Buscar</NavLink>
+                <NavLink to="/masbuscados" style={navStyle} end>Mas Buscados</NavLink>
                 <NavLink to="/perfil" style={navStyle} end>Perfil</NavLink>
             </nav>
+
+            {/* NUEVO: Breadcrumbs o el camino de migajas de pan */}
+            <Breadcrumbs />
+
             <Outlet />
         </div>
     );
