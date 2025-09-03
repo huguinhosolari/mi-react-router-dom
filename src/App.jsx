@@ -9,6 +9,11 @@ import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import { AuthProvider } from "./auth/AuthContext";
 import RequireAuth from "./auth/RequireAuth";
+import MasBuscado from "./pages/MasBuscado";
+
+import ProductosLayout from "./pages/ProductosLayout";
+import Categorias from "./pages/Categorias";
+import Ofertas from "./pages/Ofertas";
 
 export default function App() {
   return  (
@@ -17,11 +22,15 @@ export default function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           
-          {/* Runtas anidadas bajo /productos */}
-          <Route path="productos">
-            <Route index element={<Productos />} />
-            <Route path=":id" element={<ProductoDetalle />} />
+          {/* Sección Productos con rutas anidadas */}
+          <Route path="productos" element={<ProductosLayout />}>
+            <Route index element={<Productos />} /> {/* /productos */}
+            <Route path="categorias" element={<Categorias />} /> {/* /productos/categorias */}
+            <Route path="ofertas" element={<Ofertas />} /> {/* /productos/ofertas */}
+            <Route path=":id" element={<ProductoDetalle />} /> {/* /productos/:id */}
           </Route>
+          
+          <Route path="masbuscados" element={<MasBuscado />} />
 
           <Route path="buscar" element={<Buscar />} />
 
